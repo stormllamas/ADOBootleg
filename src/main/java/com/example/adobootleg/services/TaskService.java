@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface TaskService {
     public List<Task> findAll();
-    public Task findById(int sprintId);
+    public Task findById(Long sprintId);
     public Task findByName(String sprintName);
     public Task save(Task sprint);
-    public void deleteById(int sprintId);
+    public void deleteById(Long sprintId);
 }

@@ -4,19 +4,48 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="ADObootleg")
-public class StoryEntity extends TaskItemEntity {
-    @Column(name="points")
+public class StoryEntity  {
+    @Id
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String name;
+    private String description;
     private float points;
 
-    @OneToMany(cascade = { CascadeType.ALL})
-    @JoinColumn(name="story_id")
-    private List<TaskEntity> tasks;
+    public StoryEntity() {
+    }
 
-    public StoryEntity(String name, String description, SprintEntity sprint, float points, List<TaskEntity> tasks) {
-        super(name, description, sprint);
+    public StoryEntity(Long id, String name, String description, float points) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
         this.points = points;
-        this.tasks = tasks;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public float getPoints() {
@@ -25,13 +54,5 @@ public class StoryEntity extends TaskItemEntity {
 
     public void setPoints(float points) {
         this.points = points;
-    }
-
-    public List<TaskEntity> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<TaskEntity> tasks) {
-        this.tasks = tasks;
     }
 }

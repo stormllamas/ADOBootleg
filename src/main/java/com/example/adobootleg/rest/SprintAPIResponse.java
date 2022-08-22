@@ -1,16 +1,27 @@
 package com.example.adobootleg.rest;
 
-public class SprintAPIResponse {
+import java.util.Date;
 
+public class SprintAPIResponse {
+    private int id;
     private String name;
-    private int toalStoryPoints;
+    private Date creationDate;
 
     public SprintAPIResponse() {
     }
 
-    public SprintAPIResponse(String name, int toalStoryPoints) {
+    public SprintAPIResponse(int id, String name, Date creationDate) {
+        this.id = id;
         this.name = name;
-        this.toalStoryPoints = toalStoryPoints;
+        this.creationDate = creationDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -21,11 +32,11 @@ public class SprintAPIResponse {
         this.name = name;
     }
 
-    public int getToalStoryPoints() {
-        return toalStoryPoints;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setToalStoryPoints(int toalStoryPoints) {
-        this.toalStoryPoints = toalStoryPoints;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 }

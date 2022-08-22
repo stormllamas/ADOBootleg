@@ -4,32 +4,32 @@ import java.util.Date;
 import java.util.List;
 
 public class Sprint {
-    private int id;
+    private Integer id;
 
     private String name;
 
     private Date creationDate;
 
-    private List<Task> tasks;
-
-    private List<Bug> bugs;
-
     private List<Story> stories;
 
-    public Sprint(int id, String name, Date creationDate, List<Task> tasks, List<Bug> bugs, List<Story> stories) {
+    public Sprint(Integer id, String name, Date creationDate) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
-        this.tasks = tasks;
-        this.bugs = bugs;
+    }
+
+    public Sprint(Integer id, String name, Date creationDate, List<Story> stories) {
+        this.id = id;
+        this.name = name;
+        this.creationDate = creationDate;
         this.stories = stories;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,22 +49,22 @@ public class Sprint {
         this.creationDate = creationDate;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-
-    public List<Bug> getBugs() {
-        return bugs;
-    }
-
-    public void setBugs(List<Bug> bugs) {
-        this.bugs = bugs;
-    }
-
+//    public List<Task> getTasks() {
+//        return tasks;
+//    }
+//
+//    public void setTasks(List<Task> tasks) {
+//        this.tasks = tasks;
+//    }
+//
+//    public List<Bug> getBugs() {
+//        return bugs;
+//    }
+//
+//    public void setBugs(List<Bug> bugs) {
+//        this.bugs = bugs;
+//    }
+//
     public List<Story> getStories() {
         return stories;
     }

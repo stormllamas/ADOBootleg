@@ -8,56 +8,39 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class SprintServiceImpl implements SprintService {
-//    private static List<Sprint> sprints = new ArrayList<>();
-//
-//    static {
-////        Task task1 = new Task(1,"Task 1", "Implement A", null,null);
-////        Task task2 = new Task(2,"Task 2", "Implement B", null,null);
-////        Task task3 = new Task(3,"Task 3", "Implement C", null,null);
-//        Sprint sprint1 = new Sprint(1,"Sprint 1", new Date(), new ArrayList<Task>(), new ArrayList<Bug>(), new ArrayList<Story>());
-////        task1.setSprint(sprint1);
-////        task2.setSprint(sprint1);
-////        task3.setSprint(sprint1);
-//        sprints.add(sprint1);
-//        sprints.add(new Sprint(2,"Sprint 2", new Date(), new ArrayList<Task>(), new ArrayList<Bug>(), new ArrayList<Story>()));
-//        sprints.add(new Sprint(3,"Sprint 3", new Date(), new ArrayList<Task>(), new ArrayList<Bug>(), new ArrayList<Story>()));
-//    }
+
 
     @Autowired
     private SprintRepository sprintRepository;
+
+    @Autowired
+    private SprintAdapter sprintAdapter;
 
     public SprintServiceImpl() {
     }
 
     @Override
-    public List<SprintEntity> findAll() {
-        List<SprintEntity> list = new ArrayList<>();
-        for(SprintEntity sprint: sprintRepository.findAll()){
-            list.add(sprint);
-        }
-        return list;
+    public List<Sprint> findAll() {
+
+        Iterable<SprintEntity> sprintsFromSpringData = sprintRepository.findAll();
+
+        return StreamSupport.stream(sprintsFromSpringData.spliterator(), false).map(
+                entity -> sprintAdapter.toSprint(entity)
+        ).collect(Collectors.toList());
     }
 
     @Override
-    public SprintEntity findById(int sprintId) {
-        return sprintRepository.findById(sprintId).get();
-    }
+    public Sprint save(Sprint sprint) {
 
-    @Override
-    public SprintEntity findByName(String sprintName) {
-        return sprintRepository.findByName(sprintName);
-    }
+        SprintEntity convertedSprint = sprintAdapter.toSprintEntity(sprint);
 
-    @Override
-    public SprintEntity save(SprintEntity sprint) {
-        return sprintRepository.save(sprint);
-    }
+        SprintEntity savedSprintEntity = sprintRepository.save(convertedSprint);
 
-    @Override
-    public void deleteById(int sprintId) {
-        sprintRepository.deleteById(sprintId);
+        return sprintAdapter.toSprint(savedSprintEntity);
     }
 }

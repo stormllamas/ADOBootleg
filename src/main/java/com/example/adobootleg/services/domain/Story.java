@@ -5,12 +5,12 @@ import java.util.List;
 public class Story extends TaskItem {
     private float points;
 
-    private List<Task> tasks;
 
-    public Story(String name, String description, Sprint sprint, float points, List<Task> tasks) {
-        super(name, description, sprint);
+    public Story(Long id, String name, String description, float points
+    ) {
+        super(id, name, description);
         this.points = points;
-        this.tasks = tasks;
+
     }
 
     public float getPoints() {
@@ -21,11 +21,11 @@ public class Story extends TaskItem {
         this.points = points;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
+//    public List<Task> getTasks() {
+//        return tasks;
+//    }
+//
+//    public void setTasks(List<Task> tasks) {
+//        this.tasks = tasks;
+//    }
 }

@@ -1,25 +1,25 @@
 package com.example.adobootleg.services.domain;
 
 public class TaskItem {
-    private int id;
+    private Long id;
 
     private String name;
 
     private String description;
 
-    private Sprint sprint;
 
-    public TaskItem(String name, String description, Sprint sprint) {
+    public TaskItem(Long id, String name, String description) {
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.sprint = sprint;
+
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,11 +39,4 @@ public class TaskItem {
         this.description = description;
     }
 
-    public Sprint getSprint() {
-        return sprint;
-    }
-
-    public void setSprint(Sprint sprint) {
-        this.sprint = sprint;
-    }
 }
