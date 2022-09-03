@@ -4,32 +4,31 @@ import java.util.Date;
 import java.util.List;
 
 public class Sprint {
-    private Integer id;
-
+    private Long id;
     private String name;
-
     private Date creationDate;
-
     private List<Story> stories;
+    private List<Task> tasks;
 
-    public Sprint(Integer id, String name, Date creationDate) {
+    public Sprint(Long id, String name, Date creationDate) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
     }
 
-    public Sprint(Integer id, String name, Date creationDate, List<Story> stories) {
+    public Sprint(Long id, String name, Date creationDate, List<Story> stories) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
         this.stories = stories;
+        this.tasks = tasks;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,27 +48,19 @@ public class Sprint {
         this.creationDate = creationDate;
     }
 
-//    public List<Task> getTasks() {
-//        return tasks;
-//    }
-//
-//    public void setTasks(List<Task> tasks) {
-//        this.tasks = tasks;
-//    }
-//
-//    public List<Bug> getBugs() {
-//        return bugs;
-//    }
-//
-//    public void setBugs(List<Bug> bugs) {
-//        this.bugs = bugs;
-//    }
-//
     public List<Story> getStories() {
         return stories;
     }
 
     public void setStories(List<Story> stories) {
         this.stories = stories;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

@@ -3,12 +3,11 @@ package com.example.adobootleg.repository;
 import javax.persistence.*;
 
 @Entity
-@Table(name="ADObootleg")
 public class TaskItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name="name")
     private String name;
@@ -16,21 +15,24 @@ public class TaskItemEntity {
     @Column(name="description")
     private String description;
 
-    @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-    @JoinColumn(name = "sprint_id")
-    private SprintEntity sprint;
+//    @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+//    @JoinColumn(name = "sprint_id")
+//    private SprintEntity sprint;
 
-    public TaskItemEntity(String name, String description, SprintEntity sprint) {
-        this.name = name;
-        this.description = description;
-        this.sprint = sprint;
+    public TaskItemEntity() {
     }
 
-    public int getId() {
+    public TaskItemEntity(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,13 +50,5 @@ public class TaskItemEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public SprintEntity getSprint() {
-        return sprint;
-    }
-
-    public void setSprint(SprintEntity sprint) {
-        this.sprint = sprint;
     }
 }

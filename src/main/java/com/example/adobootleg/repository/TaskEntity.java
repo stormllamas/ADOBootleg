@@ -3,28 +3,45 @@ package com.example.adobootleg.repository;
 import javax.persistence.*;
 
 @Entity
-@Table(name="ADObootleg")
 public class TaskEntity extends TaskItemEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    //    @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+    //    @JoinColumn(name = "story_id")
+    //    private StoryEntity story;
+    private Float hoursEstimate;
+    private Float hoursRemaining;
+    private Float hoursCompleted;
 
-    @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-    @JoinColumn(name = "story_id")
-    private StoryEntity story;
-
-    public TaskEntity(int id, String name, String description, SprintEntity sprint, StoryEntity story) {
-        super(name, description, sprint);
-        this.id = id;
-        this.story = story;
+    public TaskEntity() {
     }
 
-    public StoryEntity getStory() {
-        return story;
+    public TaskEntity(Long id, String name, String description, Float hoursEstimate, Float hoursRemaining, Float hoursCompleted) {
+        super(id, name, description);
+        this.hoursEstimate = hoursEstimate;
+        this.hoursRemaining = hoursRemaining;
+        this.hoursCompleted = hoursCompleted;
     }
 
-    public void setStory(StoryEntity story) {
-        this.story = story;
+    public Float getHoursEstimate() {
+        return hoursEstimate;
+    }
+
+    public void setHoursEstimate(Float hoursEstimate) {
+        this.hoursEstimate = hoursEstimate;
+    }
+
+    public Float getHoursRemaining() {
+        return hoursRemaining;
+    }
+
+    public void setHoursRemaining(Float hoursRemaining) {
+        this.hoursRemaining = hoursRemaining;
+    }
+
+    public Float getHoursCompleted() {
+        return hoursCompleted;
+    }
+
+    public void setHoursCompleted(Float hoursCompleted) {
+        this.hoursCompleted = hoursCompleted;
     }
 }

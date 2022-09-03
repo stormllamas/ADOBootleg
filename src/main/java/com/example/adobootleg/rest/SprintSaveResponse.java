@@ -4,33 +4,33 @@ import java.util.Date;
 import java.util.List;
 
 public class SprintSaveResponse {
-    private Integer id;
+    private Long id;
     private String name;
     private Date creationDate;
-    private List<StoryAPI> stories;
+    private List<StoryGetResponse> stories;
 
 
     public SprintSaveResponse() {
     }
 
-    public SprintSaveResponse(Integer id, String name, Date creationDate) {
+    public SprintSaveResponse(Long id, String name, Date creationDate) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
     }
 
-    public SprintSaveResponse(Integer id, String name, Date creationDate, List<StoryAPI> stories) {
+    public SprintSaveResponse(Long id, String name, Date creationDate, List<StoryGetResponse> stories) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
         this.stories = stories;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -50,11 +50,11 @@ public class SprintSaveResponse {
         this.creationDate = creationDate;
     }
 
-    public List<StoryAPI> getStories() {
+    public List<StoryGetResponse> getStories() {
         return stories;
     }
 
-    public void setStories(List<StoryAPI> stories) {
+    public void setStories(List<StoryGetResponse> stories) {
         this.stories = stories;
     }
 }

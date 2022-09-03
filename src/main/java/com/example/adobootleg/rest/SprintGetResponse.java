@@ -1,35 +1,24 @@
-package com.example.adobootleg.repository;
+package com.example.adobootleg.rest;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-public class SprintEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class SprintGetResponse {
     private Long id;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "creation_date")
     private Date creationDate;
+    private List<StoryGetResponse> stories;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<StoryEntity> stories;
-
-    public SprintEntity() {
+    public SprintGetResponse() {
     }
 
-    public SprintEntity(Long id, String name, Date creationDate) {
+    public SprintGetResponse(Long id, String name, Date creationDate) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
     }
 
-    public SprintEntity(Long id, String name, Date creationDate, List<StoryEntity> stories) {
+    public SprintGetResponse(Long id, String name, Date creationDate, List<StoryGetResponse> stories) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
@@ -60,11 +49,11 @@ public class SprintEntity {
         this.creationDate = creationDate;
     }
 
-    public List<StoryEntity> getStories() {
+    public List<StoryGetResponse> getStories() {
         return stories;
     }
 
-    public void setStories(List<StoryEntity> stories) {
+    public void setStories(List<StoryGetResponse> stories) {
         this.stories = stories;
     }
 }

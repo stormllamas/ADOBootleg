@@ -1,19 +1,19 @@
-package com.example.adobootleg.services.domain;
+package com.example.adobootleg.rest;
 
-public class TaskItem {
+public class BugGetResponse {
     private Long id;
-
     private String name;
-
     private String description;
+    private int priority;
 
-    public TaskItem() {
+    public BugGetResponse() {
     }
 
-    public TaskItem(Long id, String name, String description) {
+    public BugGetResponse(Long id, String name, String description, int priority) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.priority = priority;
     }
 
     public Long getId() {
@@ -40,4 +40,11 @@ public class TaskItem {
         this.description = description;
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
 }

@@ -3,20 +3,21 @@ package com.example.adobootleg.repository;
 import javax.persistence.*;
 
 @Entity
-@Table(name="ADObootleg")
 public class BugEntity extends TaskItemEntity {
-
     @Column(name="priority")
     private int priority;
 
-    @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-    @JoinColumn(name = "story_id")
-    private StoryEntity story;
+//    @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+//    @JoinColumn(name = "story_id")
+//    private StoryEntity story;
 
-    public BugEntity(String name, String description, SprintEntity sprint, int priority, StoryEntity story) {
-        super(name, description, sprint);
+
+    public BugEntity() {
+    }
+
+    public BugEntity(Long id, String name, String description, int priority) {
+        super(id, name, description);
         this.priority = priority;
-        this.story = story;
     }
 
     public int getPriority() {
@@ -25,13 +26,5 @@ public class BugEntity extends TaskItemEntity {
 
     public void setPriority(int priority) {
         this.priority = priority;
-    }
-
-    public StoryEntity getStory() {
-        return story;
-    }
-
-    public void setStory(StoryEntity story) {
-        this.story = story;
     }
 }

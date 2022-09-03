@@ -2,25 +2,25 @@ package com.example.adobootleg.rest;
 
 import java.util.Date;
 
-public class SprintAPIResponse {
-    private int id;
+public class SprintSimpleGetResponse {
+    private Long id;
     private String name;
     private Date creationDate;
 
-    public SprintAPIResponse() {
+    public SprintSimpleGetResponse() {
     }
 
-    public SprintAPIResponse(int id, String name, Date creationDate) {
+    public SprintSimpleGetResponse(Long id, String name, Date creationDate) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
